@@ -20,11 +20,13 @@ router.post('/projects', (req, res, next) => {
     .catch((err) => res.json(err));
 });
 
+// GET route => to get the list of Projects
 router.get('/projects', (req, res, next) => {
   Project.find()
     .populate('tasks')
     .then((allTheProjects) => {
-      res.json({ success: true, message: allTheProjects });
+      console.log('my all the projects', allTheProjects);
+      res.json(allTheProjects);
     })
     .catch((err) => res.json({ success: false, message: err }));
 });

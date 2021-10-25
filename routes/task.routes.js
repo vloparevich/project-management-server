@@ -33,8 +33,8 @@ router.get('/tasks/:taskId', (req, res, next) => {
     return;
   }
   Task.findById(taskId)
-    .populate('project')
-    .then((task) => res.json(task))
+    .populate('projectID')
+    .then((task) => res.json({ message: task }))
     .catch((error) => res.json(error));
 });
 
